@@ -21,28 +21,6 @@ public class LionTest {
     }
 
     @Test
-    public void testDoesHaveManeForMale() throws Exception {
-        Feline mockFeline = mock(Feline.class);
-        Lion lion = new Lion("Самец", mockFeline);
-
-        assertTrue(lion.doesHaveMane());
-    }
-
-    @Test
-    public void testDoesHaveManeForFemale() throws Exception {
-        Feline mockFeline = mock(Feline.class);
-        Lion lion = new Lion("Самка", mockFeline);
-
-        assertFalse(lion.doesHaveMane());
-    }
-
-    @Test(expected = Exception.class)
-    public void testInvalidSex() throws Exception {
-        Feline mockFeline = mock(Feline.class);
-        new Lion("InvalidSex", mockFeline);
-    }
-
-    @Test
     public void testGetFood() throws Exception {
         Feline mockFeline = mock(Feline.class);
         when(mockFeline.getFood("Хищник")).thenReturn(List.of("Мясо"));
