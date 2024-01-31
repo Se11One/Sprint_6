@@ -40,9 +40,8 @@ public class LionDoesHaveManeTest {
             Lion lion = new Lion(sex, feline);
             assertEquals(expectedHasMane, lion.doesHaveMane());
         } catch (Exception e) {
-            if ("Используйте допустимые значения пола животного - самей или самка".equals(e.getMessage())) {
-                assertFalse(expectedHasMane);
-            }
+            assertEquals("Используйте допустимые значения пола животного - самей или самка", e.getMessage());
+            assertFalse(expectedHasMane);
         }
     }
 }

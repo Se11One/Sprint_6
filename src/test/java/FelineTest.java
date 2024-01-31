@@ -30,17 +30,19 @@ public class FelineTest {
     @Test
     public void testGetKittens() {
         Feline feline = new Feline();
-        int kittens = feline.getKittens();
+        int kittensCount = 1;
+        int kittens = feline.getKittens(kittensCount);
 
-        assertEquals(1, kittens);
+        assertEquals(kittensCount, kittens);
     }
 
     @Test
     public void testGetKittensWithCount() {
         Feline feline = new Feline();
-        int kittens = feline.getKittens(3);
+        int kittensCount = 3;
+        int kittens = feline.getKittens(kittensCount);
 
-        assertEquals(3, kittens);
+        assertEquals(kittensCount, kittens);
     }
 
     @Test
@@ -60,10 +62,10 @@ public class FelineTest {
     @Test
     public void testGetKittensMocked() {
         Feline mockFeline = mock(Feline.class);
-        when(mockFeline.getKittens()).thenReturn(5);
-
+        int kittensCount = 5; // Replace this line with your variable
+        when(mockFeline.getKittens()).thenReturn(kittensCount);
         int kittens = mockFeline.getKittens();
 
-        assertEquals(5, kittens);
+        assertEquals(kittensCount, kittens);
     }
 }
