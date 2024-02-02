@@ -36,12 +36,15 @@ public class LionDoesHaveManeTest {
 
     @Test
     public void testDoesHaveMane() {
+        Lion lion;
+
         try {
-            Lion lion = new Lion(sex, feline);
-            assertEquals(expectedHasMane, lion.doesHaveMane());
+            lion = new Lion(sex, feline);
         } catch (Exception e) {
             assertEquals("Используйте допустимые значения пола животного - самей или самка", e.getMessage());
             assertFalse(expectedHasMane);
+            return;
         }
+        assertEquals(expectedHasMane, lion.doesHaveMane());
     }
 }
