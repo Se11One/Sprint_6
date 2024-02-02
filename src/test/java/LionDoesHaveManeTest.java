@@ -1,0 +1,50 @@
+import com.example.Feline;
+import com.example.Lion;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+
+import java.util.Arrays;
+import java.util.Collection;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.mock;
+
+@RunWith(Parameterized.class)
+public class LionDoesHaveManeTest {
+
+    private final String sex;
+    private final boolean expectedHasMane;
+    private final Feline feline;
+
+    public LionDoesHaveManeTest(String sex, boolean expectedHasMane) {
+        this.sex = sex;
+        this.expectedHasMane = expectedHasMane;
+        this.feline = mock(Feline.class);
+    }
+
+    @Parameterized.Parameters
+    public static Collection<Object[]> data() {
+        return Arrays.asList(new Object[][]{
+                {"Самец", true},
+                {"Самка", false},
+                {"InvalidSex", false}
+        });
+    }
+
+    @Test
+    public void testDoesHaveMane() {
+        Lion lion;
+
+        try {
+            lion = new Lion(sex, feline);
+        } catch (Exception e) {
+            assertEquals("Используйте допустимые значения пола животного - самей или самка", e.getMessage());
+            assertFalse(expectedHasMane);
+            return;
+        }
+        assertEquals(expectedHasMane, lion.doesHaveMane());
+    }
+}
